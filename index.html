@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0e1116" />
+    <link rel="canonical" href="https://opentuner.fly.dev/" />
+
+    <title>OpenTuner — free open-source guitar tuner for any tuning</title>
+    <meta
+      name="description"
+      content="Free open-source online guitar tuner with microphone pitch detection. Tune to any tuning — standard, Eb, Drop D, Drop C#, DADGAD or fully custom. Runs in your browser, installable and offline-ready, no signup, no ads. Your audio never leaves your device."
+    />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://opentuner.fly.dev/" />
+    <meta
+      property="og:title"
+      content="OpenTuner — free open-source guitar tuner for any tuning"
+    />
+    <meta
+      property="og:description"
+      content="Microphone tuner for any tuning — standard, Eb, Drop D, DADGAD or custom. Free, open-source, in your browser."
+    />
+    <meta property="og:image" content="https://opentuner.fly.dev/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "OpenTuner",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web (any modern browser)",
+        "url": "https://opentuner.fly.dev/",
+        "description": "Free open-source online guitar tuner with microphone pitch detection. Tune to any tuning — standard, Eb, Drop D, Drop C#, DADGAD or fully custom. Installable PWA, works offline. Audio is processed locally and never uploaded.",
+        "isAccessibleForFree": true,
+        "browserRequirements": "Requires JavaScript and microphone access",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is OpenTuner free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. OpenTuner is completely free and open-source, with no signup, no ads and no download required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can it tune to any tuning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It includes standard, Eb/D#, Drop D, Drop C#, D standard, Drop C, DADGAD and Open G presets, plus a fully custom per-string tuning you can set by semitones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on a phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, it works in any modern mobile browser over HTTPS. You can also install it as a PWA and use it offline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my audio sent anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All pitch detection runs locally in your browser. Your microphone audio is never uploaded or stored."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>OpenTuner — free open-source guitar tuner for any tuning</h1>
+      <p>
+        OpenTuner is a free, open-source online guitar tuner that uses your
+        microphone to detect pitch. Tune to standard, Eb/D#, Drop D, Drop C#,
+        DADGAD, Open G or any custom tuning — right in your browser. Please
+        enable JavaScript and allow microphone access to use the tuner.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

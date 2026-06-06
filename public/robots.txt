@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://opentuner.fly.dev/sitemap.xml
