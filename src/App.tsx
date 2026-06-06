@@ -438,7 +438,16 @@ export default function App() {
           </p>
         </details>
 
-        <p className="credit">OpenTuner · free, in your browser · 🎸</p>
+        <p className="credit">
+          Free, open-source guitar tuner for any tuning ·{' '}
+          <a
+            href="https://github.com/yuri-cherkasov90/opentuner"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </a>
+        </p>
       </footer>
     </div>
   )

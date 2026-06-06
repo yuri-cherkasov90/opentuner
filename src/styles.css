@@ -470,6 +470,13 @@ body {
   text-align: center;
   margin: 6px 0 0;
 }
+.credit a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.credit a:hover {
+  text-decoration: underline;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
