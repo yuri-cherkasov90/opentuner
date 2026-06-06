@@ -245,9 +245,7 @@ export default function App() {
   const nav = navigator as Navigator & { standalone?: boolean }
   const isStandalone =
     window.matchMedia('(display-mode: standalone)').matches || nav.standalone === true
-  const isIOS = /iPad|iPhone|iPod/.test(nav.userAgent)
-  const canInstall = installEvt != null
-  const showInstall = !installed && !isStandalone && (canInstall || isIOS)
+  const showInstall = !installed && !isStandalone && installEvt != null
 
   const status =
     freq == null
@@ -262,7 +260,7 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <img className="logo" src="/favicon.svg" alt="" width={28} height={28} />
+          <img className="logo" src="/favicon.svg" alt="" width={24} height={24} />
           <div>
             <h1>OpenTuner</h1>
             <p className="tagline">tune to any tuning</p>
@@ -454,22 +452,15 @@ export default function App() {
 
         {showInstall && (
           <div className="install">
-            {canInstall ? (
-              <button
-                className="install-btn"
-                onClick={async () => {
-                  await installEvt?.prompt()
-                  setInstallEvt(null)
-                }}
-              >
-                📲 Install app
-              </button>
-            ) : (
-              <p className="install-hint">
-                📲 Install on iPhone: open in <b>Safari</b> (from Telegram tap{' '}
-                <b>⋯ → Open in Browser</b>), then <b>Share → Add to Home Screen</b>.
-              </p>
-            )}
+            <button
+              className="install-btn"
+              onClick={async () => {
+                await installEvt?.prompt()
+                setInstallEvt(null)
+              }}
+            >
+              📲 Install app
+            </button>
           </div>
         )}
 

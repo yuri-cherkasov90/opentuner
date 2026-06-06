@@ -37,7 +37,7 @@ body {
     calc(14px + env(safe-area-inset-bottom)) calc(14px + env(safe-area-inset-left));
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 8px;
 }
 
 /* Topbar */
@@ -57,7 +57,7 @@ body {
   border-radius: 7px;
 }
 .topbar h1 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -75,7 +75,7 @@ body {
   gap: 2px;
 }
 .tuning-picker label {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -85,9 +85,9 @@ body {
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 7px 10px;
-  font-size: 13px;
-  max-width: 230px;
+  padding: 5px 9px;
+  font-size: 12px;
+  max-width: 220px;
 }
 
 /* Big display */
@@ -95,7 +95,7 @@ body {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 14px 16px 12px;
+  padding: 10px 14px 9px;
   text-align: center;
   transition: box-shadow 0.2s, border-color 0.2s;
 }
@@ -124,7 +124,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 24px;
+  min-height: 18px;
   font-size: 14px;
 }
 .target-line .muted {
@@ -155,15 +155,15 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  min-height: 78px;
-  margin: 2px 0;
+  min-height: 46px;
+  margin: 0;
 }
 .hero .arrow {
   font-size: 26px;
   line-height: 1;
 }
 .hero .delta {
-  font-size: clamp(46px, 14vw, 64px);
+  font-size: clamp(42px, 13vw, 56px);
   font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -238,7 +238,7 @@ body {
 .sub-line {
   color: var(--muted);
   font-size: 14px;
-  min-height: 20px;
+  min-height: 16px;
   font-variant-numeric: tabular-nums;
 }
 
