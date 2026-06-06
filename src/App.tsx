@@ -43,6 +43,12 @@ export default function App() {
   const [cents, setCents] = useState(0)
   const [level, setLevel] = useState(0) // input RMS, for the VU meter
 
+  // PWA install
+  const [installEvt, setInstallEvt] = useState<{
+    prompt: () => Promise<void>
+  } | null>(null)
+  const [installed, setInstalled] = useState(false)
+
   // Audio graph (mic).
   const audioCtxRef = useRef<AudioContext | null>(null)
   const analyserRef = useRef<AnalyserNode | null>(null)
@@ -69,6 +75,24 @@ export default function App() {
 
   // Stop everything when the component unmounts.
   useEffect(() => () => stopInternal(), [])
+
+  // Capture the PWA install prompt (Android/desktop) and the installed state.
+  useEffect(() => {
+    const onPrompt = (e: Event) => {
+      e.preventDefault()
+      setInstallEvt(e as unknown as { prompt: () => Promise<void> })
+    }
+    const onInstalled = () => {
+      setInstalled(true)
+      setInstallEvt(null)
+    }
+    window.addEventListener('beforeinstallprompt', onPrompt)
+    window.addEventListener('appinstalled', onInstalled)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onPrompt)
+      window.removeEventListener('appinstalled', onInstalled)
+    }
+  }, [])
 
   function stopInternal() {
     cancelAnimationFrame(rafRef.current)
@@ -217,6 +241,13 @@ export default function App() {
   const hasReading = freq != null && targetNote != null
   const signalPresent = listening && level > 0.006
   const levelPct = Math.min(100, level * 1000) // ~0.1 RMS fills the bar
+
+  const nav = navigator as Navigator & { standalone?: boolean }
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches || nav.standalone === true
+  const isIOS = /iPad|iPhone|iPod/.test(nav.userAgent)
+  const canInstall = installEvt != null
+  const showInstall = !installed && !isStandalone && (canInstall || isIOS)
 
   const status =
     freq == null
@@ -420,6 +451,27 @@ export default function App() {
           </button>
         )}
         {error && <p className="error">{error}</p>}
+
+        {showInstall && (
+          <div className="install">
+            {canInstall ? (
+              <button
+                className="install-btn"
+                onClick={async () => {
+                  await installEvt?.prompt()
+                  setInstallEvt(null)
+                }}
+              >
+                📲 Install app
+              </button>
+            ) : (
+              <p className="install-hint">
+                📲 Install on iPhone: open in <b>Safari</b> (from Telegram tap{' '}
+                <b>⋯ → Open in Browser</b>), then <b>Share → Add to Home Screen</b>.
+              </p>
+            )}
+          </div>
+        )}
 
         <details className="help">
           <summary>How it works</summary>
