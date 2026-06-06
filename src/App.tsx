@@ -48,6 +48,7 @@ export default function App() {
     prompt: () => Promise<void>
   } | null>(null)
   const [installed, setInstalled] = useState(false)
+  const [showHowInstall, setShowHowInstall] = useState(false)
 
   // Audio graph (mic).
   const audioCtxRef = useRef<AudioContext | null>(null)
@@ -245,7 +246,7 @@ export default function App() {
   const nav = navigator as Navigator & { standalone?: boolean }
   const isStandalone =
     window.matchMedia('(display-mode: standalone)').matches || nav.standalone === true
-  const showInstall = !installed && !isStandalone && installEvt != null
+  const showInstall = !installed && !isStandalone
 
   const status =
     freq == null
@@ -455,12 +456,22 @@ export default function App() {
             <button
               className="install-btn"
               onClick={async () => {
-                await installEvt?.prompt()
-                setInstallEvt(null)
+                if (installEvt) {
+                  await installEvt.prompt()
+                  setInstallEvt(null)
+                } else {
+                  setShowHowInstall((v) => !v)
+                }
               }}
             >
               📲 Install app
             </button>
+            {showHowInstall && !installEvt && (
+              <p className="install-hint">
+                On iPhone open in <b>Safari</b>, then <b>Share → Add to Home
+                Screen</b>. In Telegram tap <b>⋯ → Open in Browser</b> first.
+              </p>
+            )}
           </div>
         )}
 
